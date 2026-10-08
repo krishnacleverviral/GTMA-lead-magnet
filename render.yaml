@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: magnet-service
+    runtime: node
+    plan: free
+    rootDir: .
+    buildCommand: npm ci --include=dev && npm run build
+    startCommand: node dist/src/server.js
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_VERSION
+        value: 22
+      - key: DATABASE_URL
+        sync: false
+      - key: SERVICE_API_KEY
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: MAGNET_MODEL
+        value: gpt-5.5
+      - key: MAGNET_REASONING_EFFORT
+        value: low

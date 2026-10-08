@@ -1,0 +1,32 @@
+{
+  "name": "magnet_service",
+  "version": "1.0.0",
+  "main": "dist/src/server.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "npm run build && node dist/src/server.js",
+    "dev": "tsx --env-file=.env --watch src/server.ts",
+    "test": "tsx --test test/service.test.ts",
+    "typecheck": "tsc --noEmit",
+    "sample": "tsx --env-file=.env scripts/send-sample.ts"
+  },
+  "license": "ISC",
+  "type": "module",
+  "description": "Lead Magnet Render Service: stateless payload-in, hosted-pages-out backend for GTMA",
+  "dependencies": {
+    "fastify": "^5.12.5",
+    "openai": "^5.23.2",
+    "postgres": "^3.4.9",
+    "sharp": "^0.34.5",
+    "zod": "^3.25.76"
+  },
+  "engines": {
+    "node": ">=20.6"
+  },
+  "private": true,
+  "devDependencies": {
+    "@types/node": "^26.6.4",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}
