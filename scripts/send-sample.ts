@@ -40,7 +40,7 @@ if (flag('--missing-input')) {
   delete payload.fixtures[0].inputs.company_dept_distribution;
 }
 
-const base = process.env.SERVICE_URL ?? `http://localhost:${process.env.PORT ?? 8080}`;
+const base = (process.env.SERVICE_URL ?? `http://localhost:${process.env.PORT ?? 8080}`).replace(/\/+$/, '');
 console.log(`POST ${base}/magnet/${endpoint}  fixtures=${payload.fixtures.length}  idempotency_key=${payload.idempotency_key}`);
 const t0 = Date.now();
 const res = await fetch(`${base}/magnet/${endpoint}`, {
